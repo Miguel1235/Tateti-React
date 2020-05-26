@@ -1,0 +1,27 @@
+.button {
+  border: 2px solid black;
+  background-color: rgba(238, 174, 202, 0.2);
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.lobbyContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.gameContainer{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, 200px));
+  gap: 10px;
+  place-content: center;
+}
+.name{
+  font-family:'Pacifico';
+}

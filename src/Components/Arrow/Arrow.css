@@ -1,0 +1,24 @@
+.arrow{
+  border-right: 7px solid;
+  border-bottom: 7px solid;
+  height: 30px;
+  width: 30px;
+}
+.left{
+  transform: rotate(-45deg);
+}
+.right{
+  transform: rotate(135deg);
+}
+
+.arrowContainer{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.text{
+  font-size: 25px;
+}

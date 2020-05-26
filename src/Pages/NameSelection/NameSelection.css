@@ -1,0 +1,14 @@
+label{
+  font-weight: bold;
+}
+input{
+  padding: 12px 20px;
+  margin: 8px;
+  border: 2px solid black;
+  border-radius: 25px;
+  background: linear-gradient(to right, #ff8177 0%, #ff867a 100%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  outline: none;
+}
+input:focus{
+  border:2px solid #b12a5b;
+}
