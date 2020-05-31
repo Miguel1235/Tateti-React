@@ -1,4 +1,4 @@
-import {CHANGE_PLAYER_NAME_LOBBY,ADD_GAME_ID,} from './actionTypes'
+import {CHANGE_PLAYER_NAME_LOBBY,ADD_GAME_ID,CHANGE_HASH_PLAYER} from './actionTypes'
 
 const changePlayerNameLobby=(newName:string)=>{
   return(
@@ -20,5 +20,15 @@ const addGameId=(gameId:string)=>{
     }
   )
 }
+const changeHashPlayer=(hash:string)=>{
+  return(
+    {
+      type:CHANGE_HASH_PLAYER,
+      payload:{
+        hash
+      }
+    }
+  )
+}
 
-export {changePlayerNameLobby,addGameId}
+export {changePlayerNameLobby,addGameId,changeHashPlayer}

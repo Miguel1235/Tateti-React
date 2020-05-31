@@ -21,7 +21,7 @@ const Match:FunctionComponent<Props>=({number})=>{
    },[number]);
   return(
     <div className="card">
-      <h5>Partida Nº {number}</h5>
+      <h5>Partida {number}</h5>
       <h6>{gameStatus}</h6>
     </div>
   )

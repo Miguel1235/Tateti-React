@@ -45,8 +45,8 @@ const Game: FunctionComponent<Props> = ({ gameId }) => {
       <Board squares={board}/>
       <Logger name={currentPlaying} winner={winner} stateMatch={gameStatus} />
       {
-        winner ?
-          <Arrow text="Reiniciar" direction="right" route="/" />
+        winner ||gameStatus==="draw"?
+          <Arrow text="Volver" direction="right" route="/lobby" />
           :
           <div></div>
       }

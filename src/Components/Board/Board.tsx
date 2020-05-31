@@ -11,21 +11,23 @@ const axios=require('axios').default
 interface Props{
   squares:Array<string>
   gameId:string,
-  namePlayerLobby:string
+  namePlayerLobby:string,
+  hash:string
 }
 
 const mapStateToProps=(state:any)=>{
   return(
     {
       namePlayerLobby:state.nameReducer.namePlayerLobby,
+      hash:state.gameReducer.hashPlayer,
       gameId:state.gameReducer.gameId,
     }
   )
 }
 
-const Board:FunctionComponent<Props>=({squares,gameId,namePlayerLobby})=>{
+const Board:FunctionComponent<Props>=({squares,gameId,namePlayerLobby,hash})=>{
    const handleClick=async (event:React.MouseEvent,number:number)=>{
-     await axios.post(`http://localhost:3000/games/${gameId}/board`,{username:namePlayerLobby,move:number.toString()})
+     await axios.post(`http://localhost:3000/games/${gameId}/board`,{username:namePlayerLobby,move:number.toString()},{headers:{'hash':hash}})
    }
    return(
      <div className="board">

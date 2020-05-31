@@ -9,16 +9,17 @@ import { connect } from 'react-redux'
 import { addGameId } from '../../Redux/actions'
 const axios = require('axios').default
 
-const mapStateToProps = (state: any) => { return ({ username: state.nameReducer.namePlayerLobby }) }
+const mapStateToProps = (state: any) => { return ({ username: state.nameReducer.namePlayerLobby ,hash:state.gameReducer.hashPlayer}) }
 const mapDispatchToProps = (dispatch: any) => { return ({ addGameId: (gameId: string) => dispatch(addGameId(gameId)) }) }
 
 interface Props {
   username: string,
   addGameId(gameId: string): void,
   history: any,
+  hash:string,
 }
 
-const Lobby: FunctionComponent<Props> = ({ username, addGameId, history }) => {
+const Lobby: FunctionComponent<Props> = ({ username, addGameId, history,hash }) => {
   const [games, setGames] = useState<any[]>([])
   const [gameId, setGame] = useState<string>("")
 
@@ -27,12 +28,12 @@ const Lobby: FunctionComponent<Props> = ({ username, addGameId, history }) => {
     setGames(games.data.data)
   }
   const createGame = async () => {
-    const newGame = await axios.post('http://localhost:3000/games', { username })
+    const newGame = await axios.post('http://localhost:3000/games', { username },{headers:{'hash':hash}})
     addGameId(newGame.data.data[0])
   }
   const addPlayerToMatch = async () => {
     const number = Number(gameId)
-    await axios.put(`http://localhost:3000/games/${number}`, { username })
+    await axios.put(`http://localhost:3000/games/${number}`, { username },{headers:{'hash':hash}})
     history.push("/game")
     addGameId(gameId)
   }
@@ -45,6 +46,7 @@ const Lobby: FunctionComponent<Props> = ({ username, addGameId, history }) => {
   return (
     <div className="lobbyContainer">
       <div className="name">{username}</div>
+      <p style={{fontSize:12}}><strong>No te olvides el hash...</strong> {hash}</p>
       <div className="gameContainer">
         {
           games.map((game, i) =>
